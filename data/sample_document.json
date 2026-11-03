@@ -1,0 +1,24 @@
+{
+    "documents": [
+        {
+            "brand": "Asana",
+            "source": "asana-review",
+            "text": "Asana is a project management platform used by teams to organize tasks, manage projects, track progress and collaborate. It offers a free Personal plan and paid plans with additional features. Teams can use project views, task assignments, automation and reporting capabilities."
+        },
+        {
+            "brand": "Trello",
+            "source": "trello-review",
+            "text": "Trello is a project management tool based on boards, lists and cards. It helps teams organize their work visually. Trello offers a free plan and paid subscriptions with additional features such as automation, advanced views and administrative controls."
+        },
+        {
+            "brand": "Asana",
+            "source": "asana-features",
+            "text": "Asana provides task management, project timelines, workflow automation, reporting and team collaboration features. It is useful for teams managing multiple projects and tracking dependencies."
+        },
+        {
+            "brand": "Trello",
+            "source": "trello-features",
+            "text": "Trello uses a Kanban-style interface where tasks move across lists representing different stages of work. Teams can assign members, set deadlines, attach files and automate repetitive workflows."
+        }
+    ]
+}
