@@ -13,5 +13,5 @@ class IngestRequest(BaseModel):
     documents: List[DocumentInput]
     
 class IngestResponse(BaseModel):
-    document_stored: str
+    documents_stored: int
     chunks_stored: int
