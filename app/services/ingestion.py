@@ -63,19 +63,32 @@ async def ingest_documents(tenant_id: str,documents: list):
         #step 5: Create langchain documents with metadata
         langchain_docs = []
         chunk_ids = []
-        source = document.source or str(document.url) if document.url else "manual"
+        source = (
+            str(document.url)
+            if document.url
+            else (document.source or "manual")
+        )
+        # source = document.source or str(document.url) if document.url else "manual"
         for chunk_index, chunk_text in enumerate(chunks):
             metadata = {
                 "tenant_id": tenant_id,
                 "doc_id": doc_id,
                 "chunk_index": chunk_index,
-                "source": source
+                "source": source,
+                "brand": document.brand
             }
             langchain_docs.append(Document(page_content=chunk_text, metadata=metadata))
             chunk_ids.append(f"{doc_id}_{chunk_index}")
             
         #step 6: generate embeddings and store in Pinecone
-        vector_store.add_documents(documents = langchain_docs, ids=chunk_ids)
+        #synchronous call to Pinecone, which is acceptable for ingestion
+        # vector_store.add_documents(documents = langchain_docs, ids=chunk_ids)
+        
+        #asynchronous insertion
+        await vector_store.aadd_documents(
+            documents=langchain_docs,
+            ids=chunk_ids
+        )
         document_stored += 1
         chunks_stored += len(chunks)
     return {

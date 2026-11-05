@@ -9,6 +9,7 @@ langchain-huggingface
 langchain-pinecone
 pinecone
 langchain-text-splitters
+langchain_groq
 sentence-transformers
 
 pydantic
