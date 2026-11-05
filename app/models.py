@@ -1,4 +1,4 @@
-from pydantic import BaseModel, HttpUrl, model_validator
+from pydantic import BaseModel, HttpUrl
 from typing import List, Optional
 
 class DocumentInput(BaseModel):
@@ -6,15 +6,15 @@ class DocumentInput(BaseModel):
     url: Optional[HttpUrl] = None
     text: Optional[str] = None
     source: Optional[str] = None
-    brand : list[str]
+    brand : str
     
-    @model_validator(mode="after")
-    def validate_document_content(self):
-        if bool(self.url) == bool(self.text):
-            raise ValueError(
-                "Provide exactly one of url or text."
-            )
-        return self
+    # @model_validator(mode="after")
+    # def validate_document_content(self):
+    #     if bool(self.url) == bool(self.text):
+    #         raise ValueError(
+    #             "Provide exactly one of url or text."
+    #         )
+    #     return self
     
     
 class IngestRequest(BaseModel):

@@ -13,7 +13,7 @@ from app.graph.grading import grade_node
 
 def route_after_grading(state: BrandQAState) -> str:
     """Decide the next graph step after relevance grading."""
-
+    #conditional routing function can remain synchronous:
     if state.get("relevant_docs"):
         return "answer"
 

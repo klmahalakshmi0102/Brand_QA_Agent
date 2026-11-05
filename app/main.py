@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app.routes.ingest import router as ingest_router
-
 from app.routes.ask import router as ask_router
+from app.routes.health import router as health_router
 
 app = FastAPI(title = "Brand Q&A Agent",
               description = "Multi-tenant RAG application",
@@ -9,9 +9,10 @@ app = FastAPI(title = "Brand Q&A Agent",
 
 app.include_router(ingest_router)
 app.include_router(ask_router)
+app.include_router(health_router)
 
+# @app.get("/health")
+# async def health():
+#     # return {"status": "healthy"}
+#     return{"message": "Brand Q&A Agent is running successfully."}
 
-@app.get("/health")
-async def health():
-    # return {"status": "healthy"}
-    return{"message": "Brand Q&A Agent is running successfully."}

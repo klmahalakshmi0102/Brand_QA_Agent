@@ -31,7 +31,8 @@ grader = llm.with_structured_output(
 )
 
 
-def grade_node(state: BrandQAState) -> dict:
+
+async def grade_node(state: BrandQAState) -> dict:
     question = state["question"]
     retrieved_docs = state.get("retrieved_docs", [])
 
@@ -57,7 +58,8 @@ def grade_node(state: BrandQAState) -> dict:
         Do not use outside knowledge.
         """
 
-        result = grader.invoke(prompt)
+        # Asynchronous Groq call
+        result = await grader.ainvoke(prompt)
 
         if result.relevant:
             relevant_docs.append(doc)

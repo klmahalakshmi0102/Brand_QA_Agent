@@ -1,3 +1,8 @@
+#files to be ignored by git
+ingest_corpus.py
+test_pinecone.py
+create_pinecone_index.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

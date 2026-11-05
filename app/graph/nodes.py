@@ -6,7 +6,7 @@ from langchain_groq import ChatGroq
 
 from app.config import GROQ_API_KEY, GROQ_MODEL
 from app.graph.state import BrandQAState
-
+ 
 
 llm = ChatGroq(
     model=GROQ_MODEL,
@@ -104,8 +104,9 @@ def answer_node(state: BrandQAState) -> dict:
         citations.append({
             "source": doc.metadata.get("source", "unknown"),
             "brand": doc.metadata.get("brand", "unknown"),
-            "doc_id": doc.metadata.get("doc_id", ""),
-            "chunk_index": doc.metadata.get("chunk_index", 0)
+            # "doc_id": doc.metadata.get("doc_id", ""),
+            # "chunk_index": doc.metadata.get("chunk_index", 0)
+            "chunk_text": doc.page_content 
         })
 
     trace = list(state.get("trace", []))
