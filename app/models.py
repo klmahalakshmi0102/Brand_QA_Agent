@@ -15,3 +15,14 @@ class IngestRequest(BaseModel):
 class IngestResponse(BaseModel):
     documents_stored: int
     chunks_stored: int
+    
+
+class AskRequest(BaseModel):
+    question: str
+
+
+class AskResponse(BaseModel):
+    answer: str
+    found_in_corpus: bool
+    citations: list[dict]
+    trace: list[str]
